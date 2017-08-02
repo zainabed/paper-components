@@ -2,7 +2,8 @@
 
 module.exports = {
   build: {
-    path: 'build'
+    path: 'target',
+    src: 'target'
   },
 
   component: {

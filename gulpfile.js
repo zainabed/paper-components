@@ -6,11 +6,12 @@ requireDir('gulp');
 
 gulp.task('build', function(cb){
   return runSequence(
-    'clean',
-    'compile',
-    'test',
+  //  'clean',
+  //  'compile',
+  //  'test',
     'package',
-    'verify',
+  //  'verify',,
+    'run',
     cb
   );
 });
