@@ -39,15 +39,16 @@
 <script>
 'use strict'
 
-class PaperButton extends HTMLElmenet {
+class PaperButton extends HTMLElement {
   constructor() {
     super();
   }
 
   connectedCallback() {
-    var template = document.querySelector("#paper-button-template");
+    var currentDocument = document.currentScript.ownerDocument;
+    var template = currentDocument.querySelector("#paper-button-template");
     var clone = document.importNode(template.content, true);
-    this.createShadowRoot().innerHtml = clone;
+    this.createShadowRoot().appendChild(clone);
   }
 
   disconnectedCallback() {
@@ -55,5 +56,5 @@ class PaperButton extends HTMLElmenet {
   }
 }
 
-document.registerElement('paper-button', PaperButton);
+window.customElements.define('paper-button', PaperButton);
 </script>
