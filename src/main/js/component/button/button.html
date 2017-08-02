@@ -1,0 +1,59 @@
+<template id="paper-button-template">
+  <style>
+    .button-paper {
+      height: 36px;
+      margin-top: 6px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      margin-left: 0;
+      padding: 8px;
+      min-width: 64px;
+      border: 0;
+      cursor: pointer;
+      position: relative;
+      line-height: 24px;
+      text-align: center;
+      background: #fff;
+      color: #000;
+      display: inline-block;
+      position: relative;
+      vertical-align: top;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    .button-paper:last-of-type {
+      margin-right: 6px;
+    }
+
+  </style>
+  <div class="button-paper">
+    <content></content>
+  </div>
+
+</template>
+<script>
+'use strict'
+
+class PaperButton extends HTMLElmenet {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    var template = document.querySelector("#paper-button-template");
+    var clone = document.importNode(template.content, true);
+    this.createShadowRoot().innerHtml = clone;
+  }
+
+  disconnectedCallback() {
+
+  }
+}
+
+document.registerElement('paper-button', PaperButton);
+</script>

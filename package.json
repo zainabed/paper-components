@@ -1,0 +1,25 @@
+{
+  "name": "paper-components",
+  "version": "1.0.0",
+  "description": "HTML Web Components library based on material design",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zainabed/paper-components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zainabed/paper-components/issues"
+  },
+  "homepage": "https://github.com/zainabed/paper-components#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "require-dir": "^0.3.2",
+    "run-sequence": "^2.1.0"
+  }
+}
