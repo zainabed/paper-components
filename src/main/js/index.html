@@ -12,11 +12,16 @@
 </head>
 
 <body>
-  <paper-button>ok</paper-button>
+  <paper-button title="ok" select="test"></paper-button>
 
-  <paper-button>cancel</paper-button>
+  <paper-button title="cancel"></paper-button>
 
-  <paper-button>submit</paper-button>
+  <paper-button title="submit"></paper-button>
+  <script>
+    function test(){
+      console.log('test call');
+    }
+  </script>
 </body>
 
 </html>

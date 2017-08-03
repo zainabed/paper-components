@@ -41,7 +41,7 @@ class BaseElement extends HTMLElement {
 
   loadTemplateContent(templateId) {
     var templateBody = this.importTemplate(templateId);
-    var template = templateBody.querySelector('#' + templateId + '-template');
+    var template = templateBody.querySelector('template');
     if (template) {
       //throw exception
     }
@@ -49,7 +49,7 @@ class BaseElement extends HTMLElement {
   }
 
   registerEvents(){
-    this.template.ownerDocument.addEventListener('click', this.onClick);
+    this.addEventListener('click', this.onClick);
   }
 
   onClick(){

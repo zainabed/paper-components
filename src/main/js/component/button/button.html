@@ -17,18 +17,60 @@ class PaperButton extends BaseElement {
   constructor() {
     super();
     this.templateId = 'button';
+    this._title = null;
+    this._select = null;
+  }
+
+  get title() {
+    return this._title;
+  }
+
+  set title(title) {
+    this._title = title;
+  }
+
+  set select(callBack){
+    this._select = callBack;
+  }
+
+  get select(){
+      return this._select;
+  }
+
+  static get observedAttributes() {
+    return ["title", 'select'];
   }
 
   connectedCallback() {
     super.connectedCallback();
+    this.renderAttribute();
+  }
+
+  renderAttribute() {
+    var title = this.shadow.querySelector('#title');
+    if (title) {
+      title.innerHTML = this._title;
+    }
+
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    this['_'+name] = newValue;
+    this.renderAttribute();
   }
 
   disconnectedCallback() {
 
   }
 
-  onClick(){
-    console.log('button clicked');
+  onClick() {
+    var title = this.shadow.querySelector('#title');
+    if (title) {
+      title.innerHTML = this._title + ' is clicked';
+    }
+    if(typeof window[this._select] === 'function'){
+      window[this._select]();
+    }
   }
 
 }
