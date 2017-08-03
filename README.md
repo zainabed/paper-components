@@ -29,15 +29,14 @@ Each component should have a folder after its name and that includes
 #### example
 
 
-accepted
-If you are concerned about Unicode characters you can use ASCII to build the structures, so your example structure becomes
-
 .
-+-- component
-|   +-- button
-|   |    +-- button.html        // source
-|   |    +-- button.tpl.html    // template
-|   |    +-- button.style.html  // style
+ * component
+   * button
+     * buttom.html
+     * button.tpl.html
+     * button.style.html
+
+
 
 
 ### button.html
