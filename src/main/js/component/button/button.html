@@ -1,44 +1,26 @@
+<link rel='import' href="../lib/base-element.html"/>
 <link rel='import' href="button.tpl.html" id="button-tpl"/>
 <link rel='import' href='button.style.html' id='button-style'/>
 <script>
 'use strict'
 
-class PaperButton extends HTMLElement {
+class PaperButton extends BaseElement {
 
   constructor() {
     super();
     this.currentDocument = null;
-    this.shadow = this.createShadowRoot();
+    this.templateId = 'button';
   }
 
   connectedCallback() {
-    this.currentDocument = document.currentScript.ownerDocument;
-    var template = this.loadTemplateContent('button-tpl');
-    var style = this.loadTemplateContent('button-style');
-    this.shadow.appendChild(style);
-    this.shadow.appendChild(template);
+    super.connectedCallback();
   }
 
   disconnectedCallback() {
 
   }
 
-  importTemplate(templateId){
-    var template = this.currentDocument.querySelector('#' + templateId);
-    if(template == null){
-      //throw new Exception(templateId + ' Template not found.');
-    }
-    return template.import;
-  }
 
-  loadTemplateContent(templateId){
-    var templateBody = this.importTemplate(templateId);
-    var template = templateBody.querySelector('#' + templateId + '-template');
-    if(template){
-      //throw exception
-    }
-    return document.importNode(template.content, true);
-  }
 }
 
 window.customElements.define('paper-button', PaperButton);

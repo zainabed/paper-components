@@ -3,10 +3,37 @@ class BaseElement extends HTMLElement{
 
   constructor(){
     super();
+    this.shadow = this.createShadowRoot();
+    this.currentDocument = null;
   }
 
   connectedCallback(){
+    this.currentDocument = document.currentScript.ownerDocument;
+    this.buildComponent();
+  }
 
+  buildComponent(){
+      var template = this.loadTemplateContent(this.templateId + '-tpl');
+      var style = this.loadTemplateContent(this.templateId + '-style');
+      this.shadow.appendChild(style);
+      this.shadow.appendChild(template);
+  }
+
+  importTemplate(templateId){
+    var template = this.currentDocument.querySelector('#' + templateId);
+    if(template == null){
+      //throw new Exception(templateId + ' Template not found.');
+    }
+    return template.import;
+  }
+
+  loadTemplateContent(templateId){
+    var templateBody = this.importTemplate(templateId);
+    var template = templateBody.querySelector('#' + templateId + '-template');
+    if(template){
+      //throw exception
+    }
+    return document.importNode(template.content, true);
   }
 }
 </script>
