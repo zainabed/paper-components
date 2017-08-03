@@ -4,11 +4,18 @@
 <script>
 'use strict'
 
+/**
+ * @module element
+ * @name PaperElement
+ *
+ * @description
+ * Material design button element built using web component customer element.
+ *
+ */
 class PaperButton extends BaseElement {
 
   constructor() {
     super();
-    this.currentDocument = null;
     this.templateId = 'button';
   }
 
@@ -20,6 +27,9 @@ class PaperButton extends BaseElement {
 
   }
 
+  onClick(){
+    console.log('button clicked');
+  }
 
 }
 
