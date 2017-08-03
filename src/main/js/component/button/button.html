@@ -1,58 +1,43 @@
-<template id="paper-button-template">
-  <style>
-    .button-paper {
-      height: 36px;
-      margin-top: 6px;
-      margin-right: 6px;
-      margin-bottom: 6px;
-      margin-left: 0;
-      padding: 8px;
-      min-width: 64px;
-      border: 0;
-      cursor: pointer;
-      position: relative;
-      line-height: 24px;
-      text-align: center;
-      background: #fff;
-      color: #000;
-      display: inline-block;
-      position: relative;
-      vertical-align: top;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-    }
-
-    .button-paper:last-of-type {
-      margin-right: 6px;
-    }
-
-  </style>
-  <div class="button-paper">
-    <content></content>
-  </div>
-
-</template>
+<link rel='import' href="button.tpl.html" id="button-tpl"/>
+<link rel='import' href='button.style.html' id='button-style'/>
 <script>
 'use strict'
 
 class PaperButton extends HTMLElement {
+
   constructor() {
     super();
+    this.currentDocument = null;
+    this.shadow = this.createShadowRoot();
   }
 
   connectedCallback() {
-    var currentDocument = document.currentScript.ownerDocument;
-    var template = currentDocument.querySelector("#paper-button-template");
-    var clone = document.importNode(template.content, true);
-    this.createShadowRoot().appendChild(clone);
+    this.currentDocument = document.currentScript.ownerDocument;
+    var template = this.loadTemplateContent('button-tpl');
+    var style = this.loadTemplateContent('button-style');
+    this.shadow.appendChild(style);
+    this.shadow.appendChild(template);
   }
 
   disconnectedCallback() {
 
+  }
+
+  importTemplate(templateId){
+    var template = this.currentDocument.querySelector('#' + templateId);
+    if(template == null){
+      //throw new Exception(templateId + ' Template not found.');
+    }
+    return template.import;
+  }
+
+  loadTemplateContent(templateId){
+    var templateBody = this.importTemplate(templateId);
+    var template = templateBody.querySelector('#' + templateId + '-template');
+    if(template){
+      //throw exception
+    }
+    return document.importNode(template.content, true);
   }
 }
 

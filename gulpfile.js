@@ -10,8 +10,10 @@ gulp.task('build', function(cb){
   //  'compile',
   //  'test',
     'package',
-  //  'verify',,
+  //  'verify',
+
     'run',
+    'watch',
     cb
   );
 });

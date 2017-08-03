@@ -8,5 +8,8 @@ module.exports = {
 
   component: {
     src : [ 'src/main/js/**/*']
-  }
+  },
+  developentSource: [
+    'src/main/js/**/*'
+  ]
 }
