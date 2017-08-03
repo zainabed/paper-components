@@ -28,11 +28,17 @@ Each component should have a folder after its name and that includes
 
 #### example
 
-  +-- component
-      +-- button
-          +-- button.html        // source
-          +-- button.tpl.html    // template
-          +-- button.style.html  // style
+
+accepted
+If you are concerned about Unicode characters you can use ASCII to build the structures, so your example structure becomes
+
+.
++-- component
+|   +-- button
+|   |    +-- button.html        // source
+|   |    +-- button.tpl.html    // template
+|   |    +-- button.style.html  // style
+
 
 ### button.html
 It is a source file of element which imports it's template and style and build
