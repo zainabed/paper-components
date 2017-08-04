@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('demo-app',['ui.router'])
+angular.module('appDemo',['ui.router'])
 .config(fucntion(){
 
 })
