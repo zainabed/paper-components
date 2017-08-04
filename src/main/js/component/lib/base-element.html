@@ -55,5 +55,9 @@ class BaseElement extends HTMLElement {
   onClick(){
     console.log('clicked');
   }
+
+  querySelectorById(id){
+    return this.shadow.querySelector('#' + id);
+  }
 }
 </script>

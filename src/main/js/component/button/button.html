@@ -19,6 +19,8 @@ class PaperButton extends BaseElement {
     this.templateId = 'button';
     this._title = null;
     this._select = null;
+    this._type = 'raised';
+    this.className = 'button-paper';
   }
 
   get title() {
@@ -29,16 +31,24 @@ class PaperButton extends BaseElement {
     this._title = title;
   }
 
-  set select(callBack){
+  set select(callBack) {
     this._select = callBack;
   }
 
-  get select(){
-      return this._select;
+  get select() {
+    return this._select;
+  }
+
+  set type(type) {
+    this._type = type;
+  }
+
+  get type() {
+    return this._type;
   }
 
   static get observedAttributes() {
-    return ["title", 'select'];
+    return ["title", 'select', 'type'];
   }
 
   connectedCallback() {
@@ -47,15 +57,25 @@ class PaperButton extends BaseElement {
   }
 
   renderAttribute() {
-    var title = this.shadow.querySelector('#title');
+    var title = this.querySelectorById('title');
+
     if (title) {
       title.innerHTML = this._title;
     }
 
+    var container = this.querySelectorById('container');
+    if (container) {
+      container.className = this.getClassName();
+    }
+
+  }
+
+  getClassName() {
+    return this.className + ' ' + this.className + '-' + this._type;
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    this['_'+name] = newValue;
+    this['_' + name] = newValue;
     this.renderAttribute();
   }
 
@@ -68,7 +88,7 @@ class PaperButton extends BaseElement {
     if (title) {
       title.innerHTML = this._title + ' is clicked';
     }
-    if(typeof window[this._select] === 'function'){
+    if (typeof window[this._select] === 'function') {
       window[this._select]();
     }
   }
