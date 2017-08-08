@@ -1,9 +1,9 @@
 'use strict'
 
-angular.module('demo-app',['ui.router'])
-.config(fucntion(){
+angular.module('paper-component',['ui.router'])
+.config(function(){
 
 })
 .controller('IndexController', function(){
-
+  
 })

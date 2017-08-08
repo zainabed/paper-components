@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var requireDir = require('require-dir');
 var runSequence = require('run-sequence');
-requireDir('gulp');
+requireDir('gulp', {recurse: true});
 
 
 gulp.task('build', function(cb){
@@ -10,6 +10,7 @@ gulp.task('build', function(cb){
   //  'compile',
   //  'test',
     'package',
+    'demo-package',
   //  'verify',
 
     'run',
