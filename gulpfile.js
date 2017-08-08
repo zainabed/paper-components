@@ -10,6 +10,7 @@ gulp.task('build', function(cb){
   //  'compile',
   //  'test',
     'package',
+    'demo-package',
   //  'verify',
 
     'run',
