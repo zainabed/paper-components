@@ -1,7 +1,7 @@
 'use strict'
 
-angular.module('appDemo')
-  .config(function($stateProvider) {
+angular.module('paper-component')
+  .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('home', {
       url: '/',
       views: {
@@ -13,5 +13,6 @@ angular.module('appDemo')
         },
         content: {}
       }
-    })
+    });
+    $urlRouterProvider.otherwise('/');
   });

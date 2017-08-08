@@ -3,8 +3,10 @@ var runSequence = require('run-sequence');
 
 gulp.task('demo-package', function(cb) {
   return runSequence(
-    'build-demo-script', 
+    'build-demo-script-lib',
+    'build-demo-script',
     'build-demo-template',
-    'build-demo-index'
+    'build-demo-index',
+    cb
   )
 });
