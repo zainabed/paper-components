@@ -3,7 +3,7 @@
 <link rel='import' href='button.style.html' id='button-style'/>
 <script>
 'use strict'
-
+var currentDocument =  document.currentScript.ownerDocument;
 /**
  * @module element
  * @name PaperElement
@@ -21,6 +21,7 @@ class PaperButton extends BaseElement {
     this._select = null;
     this._type = 'raised';
     this.className = 'button-paper';
+    this.currentDocument = currentDocument;
   }
 
   get title() {

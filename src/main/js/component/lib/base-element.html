@@ -19,7 +19,6 @@ class BaseElement extends HTMLElement {
   }
 
   connectedCallback() {
-    this.currentDocument = document.currentScript.ownerDocument;
     this.buildComponent();
     this.registerEvents();
   }
