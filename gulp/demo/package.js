@@ -5,6 +5,8 @@ gulp.task('demo-package', function(cb) {
   return runSequence(
     'build-demo-script-lib',
     'build-demo-script',
+    'build-demo-css',
+    'build-demo-font',
     'build-demo-template',
     'build-demo-index',
     cb

@@ -11,8 +11,12 @@ module.exports = {
     dest: targetPath
   },
   css: {
-    src: [basePath + 'css/**/*.css'],
+    src: [basePath + '/assets/css/**/*.css'],
     dest: targetPath
+  },
+  font: {
+    src: [basePath + '/assets/css/font/*'],
+    dest: targetPath + '/font'
   },
   index: {
     src: [basePath + 'index.html'],
