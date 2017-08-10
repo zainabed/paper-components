@@ -6,18 +6,18 @@ module.exports = function defaultDeployment() {
     examples: {
       commonFiles: {
         scripts: [
-          '../../za-material.lib.js',
-          '../../za-material.js',
-          '../../za-material.template.js',
+          '../../demo-lib-script.js',
+          '../../demo-script.js',
+          '../../templates.js',
         ],
         stylesheets: [
-          '../../za-material.css',      
+          '../../demo-material.css',
         ]
       },
       dependencyPath: '../../'
     },
     scripts: [
-      
+
     ],
     stylesheets: [
 

@@ -1,6 +1,6 @@
 'use strict';
 
 (function(){
-    angular.module('z-material',['ui.router']);
+    angular.module('paper-component',['ui.router']);
 
 })();

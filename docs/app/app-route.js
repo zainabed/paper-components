@@ -1,22 +1,22 @@
 'use strict';
 
 (function(){
-  angular.module('z-material')
+  angular.module('paper-component')
   .config(function($stateProvider, $locationProvider, $urlRouterProvider){
     $stateProvider.state('home', {
       url: '/',
       views: {
         header: {
-          templateUrl: 'header/header.html',
+          templateUrl: 'header/header.tpl.html',
         },
         'side-nav': {
-          templateUrl: 'side-nav/component.html',
+          templateUrl: 'side-nav/component.tpl.html',
           controller: 'SideNavController',
           controllerAs: '$ctrl'
         },
         content: {},
         footer: {
-          templateUrl: 'footer/footer.html'
+          templateUrl: 'footer/footer.tpl.html'
         }
       }
     });

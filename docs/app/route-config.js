@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-  angular.module('z-material')
+  angular.module('paper-component')
   .config(function($stateProvider, $locationProvider, COMPONENT_ROUTE){
     angular.forEach(COMPONENT_ROUTE, function(components) {
       var stateConfig =createState(components);
@@ -23,7 +23,7 @@
           templateUrl: component.outputPath
         }
       }
-      
+
     }
   }
 

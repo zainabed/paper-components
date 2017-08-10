@@ -2,8 +2,9 @@ var Package = require('dgeni').Package;
 var path = require('canonical-path');
 var packagePath = __dirname;
 var basePath = path.resolve(packagePath, '../..');
-var files = require(basePath + '/config/demoFileConfig.js');
+var files = require(basePath + '/config/fileConfig.js');
 
+console.log(files.doc.src);
 module.exports = new Package('cssdoc', [
 	require('dgeni-packages/ngdoc'),
 	require('dgeni-packages/nunjucks'),
@@ -22,8 +23,8 @@ module.exports = new Package('cssdoc', [
 	log.level = 'info';
 	readFilesProcessor.basePath = basePath;
 	readFilesProcessor.sourceFiles = [{
-		include : files.docs.src,
-		basePath : files.docs.basePath,
+		include : files.doc.src,
+		basePath : files.doc.basePath,
 		//		fileReader : 'ngdocFileReader'
 	}];
 

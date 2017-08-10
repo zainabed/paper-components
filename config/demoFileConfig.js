@@ -1,9 +1,12 @@
-var basePath = 'demo/src/';
+var basePath = 'docs/app/';
 var targetPath = 'target';
 
 module.exports = {
   script: {
-    src: [basePath + 'js/**/*.js'],
+    src: [
+      basePath + '**/*.js',
+      basePath + '../build/src/**/*.js'
+    ],
     lib: [
       'node_modules/angular/angular.js',
       'node_modules/angular-ui-router/release/angular-ui-router.js'
@@ -27,13 +30,15 @@ module.exports = {
     dest: targetPath
   },
   template: {
-    src: [basePath + 'js/**/*.html'],
+    src: [
+      basePath + '**/*.tpl.html',
+      basePath + '../build/**/*.html',
+      basePath + '../build/**/*.html'
+    ],
     dest: targetPath
   },
-  docs: {
-    src: [
-      basePath + 'js/**/*.cp.html'
-    ],
-    basePath: 'docs/build/'
+  example: {
+    src: [ basePath + '../build/examples/**/*'],
+    dest: targetPath + '/examples'
   }
 }

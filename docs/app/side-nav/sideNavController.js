@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-  angular.module('z-material')
+  angular.module('paper-component')
   .controller('SideNavController', SideNavController)
 
   function SideNavController(COMPONENT_ROUTE){
