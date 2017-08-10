@@ -29,5 +29,11 @@ module.exports = {
   template: {
     src: [basePath + 'js/**/*.html'],
     dest: targetPath
+  },
+  docs: {
+    src: [
+      basePath + 'js/**/*.cp.html'
+    ],
+    basePath: 'docs/build/'
   }
 }
