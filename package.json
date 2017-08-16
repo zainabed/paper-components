@@ -19,6 +19,8 @@
   "devDependencies": {
     "angular": "^1.6.5",
     "angular-ui-router": "^1.0.3",
+    "dgeni": "^0.4.9",
+    "dgeni-packages": "^0.20.0",
     "gulp": "^3.9.1",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-angular-templatecache": "^2.0.0",

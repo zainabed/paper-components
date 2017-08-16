@@ -8,6 +8,7 @@ gulp.task('demo-package', function(cb) {
     'build-demo-css',
     'build-demo-font',
     'build-demo-template',
+    'build-examples',
     'build-demo-index',
     cb
   )

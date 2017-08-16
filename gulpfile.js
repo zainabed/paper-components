@@ -9,6 +9,7 @@ gulp.task('build', function(cb){
   //  'clean',
   //  'compile',
   //  'test',
+    'build-docs',
     'package',
     'demo-package',
   //  'verify',
