@@ -14,8 +14,9 @@
     angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
   </script>
   {%- endif %}
-
+    <link rel="import" href="../../component/lib/base-component.cp.html"/>
     <link rel="import" href="../../component/button/button.cp.html"/>
+
 </head>
 <body {% if not doc.example['ng-app-included'] %}ng-app="{$ doc.example.module $}"{% endif %}>
   {$ doc.fileContents $}

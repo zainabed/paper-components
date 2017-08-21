@@ -1,6 +1,5 @@
-
- 'use strict'
- var currentDocument =  document.currentScript.ownerDocument;
+'use strict'
+var currentDocument = document.currentScript.ownerDocument;
 
 /**
  * @ngdoc module
@@ -28,91 +27,66 @@
  */
 
 
- class PaperButton extends BaseElement {
+class PaperButton extends BaseElement {
 
-   constructor() {
-     super();
-     this.templateId = 'button';
-     this._title = null;
-     this._select = null;
-     this._type = 'raised';
-     this.className = 'button-paper';
-     this.currentDocument = currentDocument;
-     this.content = `
-     <%conent%>
-     `;
-   }
+  constructor() {
+    super();
+    this.templateId = 'button';
+    this._title = null;
+    this._type = 'raised';
+    this.className = 'button-paper';
+    this.currentDocument = currentDocument;
+  
+  }
 
-   get title() {
-     return this._title;
-   }
+  get title() {
+    return this._title;
+  }
 
-   set title(title) {
-     this._title = title;
-   }
+  set title(title) {
+    console.log(title);
+    this._title = title;
 
-   set select(callBack) {
-     this._select = callBack;
-   }
+  }
 
-   get select() {
-     return this._select;
-   }
+  set type(type) {
+    this._type = type;
+  }
 
-   set type(type) {
-     this._type = type;
-   }
+  get type() {
+    return this._type;
+  }
 
-   get type() {
-     return this._type;
-   }
+  static get observedAttributes() {
+    return ["title", 'select', 'type'];
+  }
 
-   static get observedAttributes() {
-     return ["title", 'select', 'type'];
-   }
+  connectedCallback() {
+    super.connectedCallback();
+    this.renderAttribute();
+  }
 
-   connectedCallback() {
-     super.connectedCallback();
-     this.renderAttribute();
-   }
+  renderAttribute() {
+    this.buildComponent();
+  }
 
-   renderAttribute() {
-     var title = this.querySelectorById('title');
+  getClassName() {
+    return this.className + ' ' + this.className + '-' + this._type;
+  }
 
-     if (title) {
-       title.innerHTML = this._title;
-     }
+  attributeChangedCallback(name, oldValue, newValue) {
+    this['_' + name] = newValue;
+    this.renderAttribute();
+  }
 
-     var container = this.querySelectorById('container');
-     if (container) {
-       container.className = this.getClassName();
-     }
+  disconnectedCallback() {
 
-   }
+  }
 
-   getClassName() {
-     return this.className + ' ' + this.className + '-' + this._type;
-   }
+  onClick() {
 
-   attributeChangedCallback(name, oldValue, newValue) {
-     this['_' + name] = newValue;
-     this.renderAttribute();
-   }
+  }
 
-   disconnectedCallback() {
+}
 
-   }
-
-   onClick() {
-     var title = this.shadow.querySelector('#title');
-     if (title) {
-       title.innerHTML = this._title + ' is clicked';
-     }
-     if (typeof window[this._select] === 'function') {
-       window[this._select]();
-     }
-   }
-
- }
-
- window.customElements.define('paper-button', PaperButton);
+window.customElements.define('paper-button', PaperButton);

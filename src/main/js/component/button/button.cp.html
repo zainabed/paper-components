@@ -34,14 +34,11 @@
      super();
      this.templateId = 'button';
      this._title = null;
-     this._select = null;
-     this._type = 'raised';
+     this._type = this._type ? this._type : 'raised';
      this.className = 'button-paper';
      this.currentDocument = currentDocument;
      this.content = `
-     <template id="button-style-template">
-<style>
-.button-paper {
+     <style>.button-paper {
   height: 36px;
   margin-top: 6px;
   margin-right: 6px;
@@ -125,15 +122,11 @@
 .button-paper-fab-content {
   width: 24px;
 }
+
 </style>
-</template>
-<template id="button-tpl-template">
-
-  <div class="button-paper button-paper-raised" id="container">
-    <span id="title"></span>
-  </div>
-
-</template>
+<div class="button-paper button-paper-{{type}}" id="container">
+  <span >{{title}}</span>
+</div>
 
      `;
    }
@@ -143,7 +136,9 @@
    }
 
    set title(title) {
+     console.log(title);
      this._title = title;
+
    }
 
    set select(callBack) {
@@ -172,17 +167,7 @@
    }
 
    renderAttribute() {
-     var title = this.querySelectorById('title');
-
-     if (title) {
-       title.innerHTML = this._title;
-     }
-
-     var container = this.querySelectorById('container');
-     if (container) {
-       container.className = this.getClassName();
-     }
-
+     this.buildComponent();
    }
 
    getClassName() {
@@ -190,7 +175,8 @@
    }
 
    attributeChangedCallback(name, oldValue, newValue) {
-     this['_' + name] = newValue;
+     this.title = newValue;
+     console.log(this['_' + name]);
      this.renderAttribute();
    }
 

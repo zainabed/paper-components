@@ -19,15 +19,16 @@ class BaseElement extends HTMLElement {
   }
 
   connectedCallback() {
-    this.buildComponent();
+  //  this.buildComponent();
     this.registerEvents();
   }
 
   buildComponent() {
-    this.template = this.loadTemplateContent(this.templateId + '-tpl');
-    var style = this.loadTemplateContent(this.templateId + '-style');
-    this.shadow.appendChild(style);
-    this.shadow.appendChild(this.template);
+  //  this.template = this.loadTemplateContent(this.templateId + '-tpl');
+//    var style = this.loadTemplateContent(this.templateId + '-style');
+//    this.shadow.appendChild(style);
+//    this.shadow.appendChild(this.template);
+    this.shadow.innerHTML = Mustache.render(this.content, this);
   }
 
   importTemplate(templateId) {
