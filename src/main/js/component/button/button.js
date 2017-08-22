@@ -68,14 +68,7 @@ class PaperButton extends BaseElement {
   }
 
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    this['_' + name] = newValue;
-    this.render();
-  }
-
-  disconnectedCallback() {
-
-  }
+ 
 
   onClick() {
 

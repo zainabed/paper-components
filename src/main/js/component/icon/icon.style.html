@@ -1,0 +1,64 @@
+<style>
+.icon {
+  cursor: pointer;
+  /* Theoretically for IE 8 & 9 (more valid) */
+  /* ...but not required as filter works too */
+  /* should come BEFORE filter */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=54)";
+  /* This works in IE 8 & 9 too */
+  /* ... but also 5, 6, 7 */
+  filter: alpha(opacity=54);
+  /* Modern Browsers */
+  opacity: 0.54;
+  color: #000; }
+  .icon .light-theme {
+    /* Theoretically for IE 8 & 9 (more valid) */
+    /* ...but not required as filter works too */
+    /* should come BEFORE filter */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=54)";
+    /* This works in IE 8 & 9 too */
+    /* ... but also 5, 6, 7 */
+    filter: alpha(opacity=54);
+    /* Modern Browsers */
+    opacity: 0.54;
+    color: #000; }
+  .icon .dark-theme {
+    /* Theoretically for IE 8 & 9 (more valid) */
+    /* ...but not required as filter works too */
+    /* should come BEFORE filter */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    /* This works in IE 8 & 9 too */
+    /* ... but also 5, 6, 7 */
+    filter: alpha(opacity=100);
+    /* Modern Browsers */
+    opacity: 1;
+    color: #fff; }
+
+.icon--small {
+  width: 24px;
+  height: 24px;
+  margin: 12px; }
+
+.icon__avatar {
+  width: 40px;
+  height: 40px;
+  background: #009688;
+  margin: 4px;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 50%; }
+
+.icon__avatar--small {
+  width: 32px;
+  height: 32px; }
+
+.icon--large {
+  width: 48px;
+  height: 48px;
+  margin: 0px; }
+
+</style>
