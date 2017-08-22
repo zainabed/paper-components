@@ -13,7 +13,6 @@ gulp.task('build', function(cb){
     'package',
     'demo-package',
   //  'verify',
-
     'run',
     'watch',
     cb

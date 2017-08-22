@@ -21,7 +21,8 @@ var currentDocument = document.currentScript.ownerDocument;
  * @example
  * <example name="card">
  * <file name="index.html">
- * <paper-button title="Ok"></paper-button>
+ * <paper-button title="button"></paper-button>
+ * <paper-button title="button" type="flat"></paper-button>
  * </file>
  * </example>
  */
@@ -34,9 +35,10 @@ class PaperButton extends BaseElement {
     this.templateId = 'button';
     this._title = null;
     this._type = 'raised';
-    this.className = 'button-paper';
     this.currentDocument = currentDocument;
-  
+    this.content = `
+     <%conent%>
+     `;
   }
 
   get title() {
@@ -63,20 +65,12 @@ class PaperButton extends BaseElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.renderAttribute();
   }
 
-  renderAttribute() {
-    this.buildComponent();
-  }
-
-  getClassName() {
-    return this.className + ' ' + this.className + '-' + this._type;
-  }
 
   attributeChangedCallback(name, oldValue, newValue) {
     this['_' + name] = newValue;
-    this.renderAttribute();
+    this.render();
   }
 
   disconnectedCallback() {

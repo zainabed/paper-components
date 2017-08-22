@@ -7,7 +7,7 @@ module.exports = {
   },
 
   component: {
-    src : [ basePath + 'js/**/*'],
+    src : [ basePath + 'js/**/*.cp.html'],
     srcTemplate:  basePath + 'js/**/*.js'
   },
   developentSource: [

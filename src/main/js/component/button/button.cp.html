@@ -1,6 +1,5 @@
-<script>
- 'use strict'
- var currentDocument =  document.currentScript.ownerDocument;
+<script>'use strict'
+var currentDocument = document.currentScript.ownerDocument;
 
 /**
  * @ngdoc module
@@ -22,22 +21,22 @@
  * @example
  * <example name="card">
  * <file name="index.html">
- * <paper-button title="Ok"></paper-button>
+ * <paper-button title="button"></paper-button>
+ * <paper-button title="button" type="flat"></paper-button>
  * </file>
  * </example>
  */
 
 
- class PaperButton extends BaseElement {
+class PaperButton extends BaseElement {
 
-   constructor() {
-     super();
-     this.templateId = 'button';
-     this._title = null;
-     this._type = this._type ? this._type : 'raised';
-     this.className = 'button-paper';
-     this.currentDocument = currentDocument;
-     this.content = `
+  constructor() {
+    super();
+    this.templateId = 'button';
+    this._title = null;
+    this._type = 'raised';
+    this.currentDocument = currentDocument;
+    this.content = `
      <style>.button-paper {
   height: 36px;
   margin-top: 6px;
@@ -129,72 +128,49 @@
 </div>
 
      `;
-   }
+  }
 
-   get title() {
-     return this._title;
-   }
+  get title() {
+    return this._title;
+  }
 
-   set title(title) {
-     console.log(title);
-     this._title = title;
+  set title(title) {
+    console.log(title);
+    this._title = title;
 
-   }
+  }
 
-   set select(callBack) {
-     this._select = callBack;
-   }
+  set type(type) {
+    this._type = type;
+  }
 
-   get select() {
-     return this._select;
-   }
+  get type() {
+    return this._type;
+  }
 
-   set type(type) {
-     this._type = type;
-   }
+  static get observedAttributes() {
+    return ["title", 'select', 'type'];
+  }
 
-   get type() {
-     return this._type;
-   }
+  connectedCallback() {
+    super.connectedCallback();
+  }
 
-   static get observedAttributes() {
-     return ["title", 'select', 'type'];
-   }
 
-   connectedCallback() {
-     super.connectedCallback();
-     this.renderAttribute();
-   }
+  attributeChangedCallback(name, oldValue, newValue) {
+    this['_' + name] = newValue;
+    this.render();
+  }
 
-   renderAttribute() {
-     this.buildComponent();
-   }
+  disconnectedCallback() {
 
-   getClassName() {
-     return this.className + ' ' + this.className + '-' + this._type;
-   }
+  }
 
-   attributeChangedCallback(name, oldValue, newValue) {
-     this.title = newValue;
-     console.log(this['_' + name]);
-     this.renderAttribute();
-   }
+  onClick() {
 
-   disconnectedCallback() {
+  }
 
-   }
+}
 
-   onClick() {
-     var title = this.shadow.querySelector('#title');
-     if (title) {
-       title.innerHTML = this._title + ' is clicked';
-     }
-     if (typeof window[this._select] === 'function') {
-       window[this._select]();
-     }
-   }
-
- }
-
- window.customElements.define('paper-button', PaperButton);
+window.customElements.define('paper-button', PaperButton);
 </script>
