@@ -1,3 +1,6 @@
+'use strict'
+var currentDocument = document.currentScript.ownerDocument;
+
 /**
  * @ngdoc module
  * @name component
@@ -18,7 +21,66 @@
  * @example
  * <example name="card">
  * <file name="index.html">
- * <paper-button title="Ok"></paper-button>
+ * <paper-button title="button"></paper-button>
+ * <paper-button title="button" type="flat"></paper-button>
  * </file>
  * </example>
  */
+
+
+class PaperButton extends BaseElement {
+
+  constructor() {
+    super();
+    this.templateId = 'button';
+    this._title = null;
+    this._type = 'raised';
+    this.currentDocument = currentDocument;
+    this.content = `
+     <%conent%>
+     `;
+  }
+
+  get title() {
+    return this._title;
+  }
+
+  set title(title) {
+    console.log(title);
+    this._title = title;
+
+  }
+
+  set type(type) {
+    this._type = type;
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  static get observedAttributes() {
+    return ["title", 'select', 'type'];
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    this['_' + name] = newValue;
+    this.render();
+  }
+
+  disconnectedCallback() {
+
+  }
+
+  onClick() {
+
+  }
+
+}
+
+window.customElements.define('paper-button', PaperButton);
