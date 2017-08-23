@@ -1,0 +1,100 @@
+<link rel='import' href="../lib/base-element.html"/>
+<link rel='import' href="button.tpl.html" id="button-tpl"/>
+<link rel='import' href='button.style.html' id='button-style'/>
+<script>
+'use strict'
+var currentDocument =  document.currentScript.ownerDocument;
+/**
+ * @module element
+ * @name PaperElement
+ *
+ * @description
+ * Material design button element built using web component customer element.
+ *
+ */
+class PaperButton extends BaseElement {
+
+  constructor() {
+    super();
+    this.templateId = 'button';
+    this._title = null;
+    this._select = null;
+    this._type = 'raised';
+    this.className = 'button-paper';
+    this.currentDocument = currentDocument;
+  }
+
+  get title() {
+    return this._title;
+  }
+
+  set title(title) {
+    this._title = title;
+  }
+
+  set select(callBack) {
+    this._select = callBack;
+  }
+
+  get select() {
+    return this._select;
+  }
+
+  set type(type) {
+    this._type = type;
+  }
+
+  get type() {
+    return this._type;
+  }
+
+  static get observedAttributes() {
+    return ["title", 'select', 'type'];
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.renderAttribute();
+  }
+
+  renderAttribute() {
+    var title = this.querySelectorById('title');
+
+    if (title) {
+      title.innerHTML = this._title;
+    }
+
+    var container = this.querySelectorById('container');
+    if (container) {
+      container.className = this.getClassName();
+    }
+
+  }
+
+  getClassName() {
+    return this.className + ' ' + this.className + '-' + this._type;
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    this['_' + name] = newValue;
+    this.renderAttribute();
+  }
+
+  disconnectedCallback() {
+
+  }
+
+  onClick() {
+    var title = this.shadow.querySelector('#title');
+    if (title) {
+      title.innerHTML = this._title + ' is clicked';
+    }
+    if (typeof window[this._select] === 'function') {
+      window[this._select]();
+    }
+  }
+
+}
+
+window.customElements.define('paper-button', PaperButton);
+</script>

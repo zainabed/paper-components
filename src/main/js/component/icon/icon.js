@@ -16,6 +16,7 @@ var currentDocument = document.currentScript.ownerDocument;
  * <example name="icon">
  * <file name="index.html">
  * <paper-icon name="star"></paper-icon>
+ * <paper-icon size="large" name="star"></paper-icon>
  * </file>
  * </example>
  */
@@ -65,7 +66,7 @@ class PaperIcon extends BaseElement {
 	}
 
 
-	
+
 }
 
 window.customElements.define('paper-icon', PaperIcon);
