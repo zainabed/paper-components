@@ -1,37 +1,23 @@
-<script>'use strict'
-var currentDocument = document.currentScript.ownerDocument;
+.orange {
+  color: #ff9800; }
 
-/**
- * @ngdoc directive
- * @module component
- * @name icon
- * @description
- * A button is wrapper for HTML button usin material design principle.
- *
- * @usage
- * Cards are a convenient means of displaying content composed of different elements. They’re also well-suited for showcasing
- * elements whose size or supported actions vary, like photos with captions of variable length.
- *
- * @example
- * <example name="icon">
- * <file name="index.html">
- * <paper-icon name="star"></paper-icon>
- * <paper-icon size="large" name="star"></paper-icon>
- * </file>
- * </example>
- */
-class PaperIcon extends BaseElement {
-	constructor(){
-		super();
-		this._name = null;
-		this._size = 'small';
-		this._style =  null;
-		this.currentDocument = currentDocument;
-	    this.content = `
-	     <style>
-:host {
-  display: inline-block;
-}
+.gray {
+  color: #757575; }
+
+.orange {
+  color: #ff9800; }
+
+.gray {
+  color: #757575; }
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(font/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(font/MaterialIcons-Regular.woff2) format("woff2"), url(font/MaterialIcons-Regular.woff) format("woff"), url(font/MaterialIcons-Regular.ttf) format("truetype"); }
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -55,6 +41,7 @@ class PaperIcon extends BaseElement {
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
   font-feature-settings: 'liga'; }
+
 .icon {
   cursor: pointer;
   /* Theoretically for IE 8 & 9 (more valid) */
@@ -93,14 +80,13 @@ class PaperIcon extends BaseElement {
 .icon--small {
   width: 24px;
   height: 24px;
-    font-size: 24px;
-  margin: 12px; }
+  margin: element-offset(48, 24px); }
 
 .icon__avatar {
   width: 40px;
   height: 40px;
   background: #009688;
-  margin: 4px;
+  margin: element-offset(48, 40px);
   display: inline-block;
   position: relative;
   vertical-align: top;
@@ -116,50 +102,4 @@ class PaperIcon extends BaseElement {
 .icon--large {
   width: 48px;
   height: 48px;
-    font-size: 48px;
-  margin: 0px; }
-
-</style>
-<i class="icon icon--{{size}}  material-icons {{style}}"><span class="">{{name}}</span></i>
-	     `;
-	}
-
-	set name(name) {
-		this._name = name;
-	}
-
-	get name(){
-		return this._name;
-	}
-
-	set size(size) {
-		this._size = size;
-	}
-
-	get size(){
-		return  this._size;
-	}
-
-	set style(style) {
-		this._style = style;
-		this.class= 'icon icon--' + this._size +  'material-icons ' + this._style;
-	}
-
-	get style(){
-		return this._style;
-	}
-
-	static get observedAttributes() {
-		return ['name', 'size', 'style'];
-	}
-
-	connectedCallback() {
-	    super.connectedCallback();
-	}
-
-
-
-}
-
-window.customElements.define('paper-icon', PaperIcon);
-</script>
+  margin: element-offset(48, 48px); }
