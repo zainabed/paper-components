@@ -21,6 +21,15 @@ class BaseElement extends HTMLElement {
     this.registerEvents();
   }
 
+  disconnectedCallback() {
+
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+      this['_' + name] = newValue;
+      this.render();
+  }
+
   render() {
     this.shadow.innerHTML = Mustache.render(this.content, this);
   }

@@ -23,6 +23,7 @@ var currentDocument = document.currentScript.ownerDocument;
  * <file name="index.html">
  * <paper-button title="button"></paper-button>
  * <paper-button title="button" type="flat"></paper-button>
+ * <paper-button icon="star" type="fab" ></paper-button>
  * </file>
  * </example>
  */
@@ -35,6 +36,7 @@ class PaperButton extends BaseElement {
     this.templateId = 'button';
     this._title = null;
     this._type = 'raised';
+    this._icon = null;
     this.currentDocument = currentDocument;
     this.content = `
      <%conent%>
@@ -51,6 +53,14 @@ class PaperButton extends BaseElement {
 
   }
 
+  set icon(icon) {
+    this._icon = icon;
+  }
+
+  get icon() {
+    return this._icon;
+  }
+
   set type(type) {
     this._type = type;
   }
@@ -60,7 +70,7 @@ class PaperButton extends BaseElement {
   }
 
   static get observedAttributes() {
-    return ["title", 'select', 'type'];
+    return ["title", 'select', 'type', 'icon'];
   }
 
   connectedCallback() {
@@ -68,14 +78,7 @@ class PaperButton extends BaseElement {
   }
 
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    this['_' + name] = newValue;
-    this.render();
-  }
 
-  disconnectedCallback() {
-
-  }
 
   onClick() {
 

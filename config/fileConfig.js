@@ -8,6 +8,7 @@ module.exports = {
 
   component: {
     src : [ basePath + 'js/**/*.cp.html'],
+    sass :  basePath + 'js/**/*.scss',
     srcTemplate:  basePath + 'js/**/*.js'
   },
   developentSource: [

@@ -1,0 +1,42 @@
+@import "variable";
+@import "function";
+@import "../config/mixin";
+
+@mixin get-paper-opacity($text-type, $theme: light) {
+    $theme-opacity: map-get($text-color-opacity, $theme);
+    $opacity: map-get($theme-opacity, $text-type);
+
+    @include get-opacity($opacity);
+}
+
+@mixin get-paper-color($text-type, $theme: 'light') {
+    @include get-paper-opacity($text-type, $theme);
+
+    @if $theme == 'light' {
+        color: #000;
+    }
+
+    @else {
+        color: #fff;
+    }
+}
+
+
+@mixin pallet($background, $color: #FFF){
+	color: $color;
+	background: $background;
+}
+
+@mixin background($color){
+	background: $color;
+	color: colorForBackground($color);
+}
+
+@mixin palletBackground($value : null){
+	$background : map-get($colors, $value);
+	@if $background == null {
+		$background : white;
+	}
+
+	@include background($background);
+}

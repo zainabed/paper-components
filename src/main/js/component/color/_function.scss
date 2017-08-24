@@ -1,0 +1,16 @@
+@import "variable";
+@import "../config/variable";
+
+@function colorForBackground($color){
+
+	@if( lightness($color) > 60 ){
+		@return $color--dark;
+	}
+	@else{
+		@return $color--light;
+	}
+}
+
+@function getColorByName($color){
+	@return map-get($colors, $color);
+}

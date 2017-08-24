@@ -4,6 +4,7 @@ var runSequence = require('run-sequence');
 
 gulp.task('package', function(cb) {
   return runSequence(
+    'sass',
     'make',
     'package-component',
   //  'package-index',
