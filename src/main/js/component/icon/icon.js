@@ -26,6 +26,9 @@ class PaperIcon extends BaseElement {
 		this._name = null;
 		this._size = 'small';
 		this._style =  null;
+		this._svg = null;
+		this._theme = 'light';
+
 		this.currentDocument = currentDocument;
 	    this.content = `
 	     <%conent%>
@@ -57,8 +60,35 @@ class PaperIcon extends BaseElement {
 		return this._style;
 	}
 
+	set theme(theme){
+		this._theme = theme;
+	}
+
+	get theme(){
+		return this._theme;
+	}
+
 	static get observedAttributes() {
-		return ['name', 'size', 'style'];
+		return ['name', 'size', 'style', 'theme'];
+	}
+
+	render(){
+		super.render();
+
+		let svgIcon  = this.querySelectorById("svg-icon");
+		let symbolDom = document.getElementById(this._name);
+		let pathDom = null;
+		if(symbolDom != null ){
+			let symbol = symbolDom.querySelector('path');
+			pathDom = symbol.cloneNode(true);;
+		}
+
+
+		if(svgIcon !=null && pathDom !=null){
+			svgIcon.appendChild(pathDom) ;
+		}
+
+
 	}
 
 	connectedCallback() {

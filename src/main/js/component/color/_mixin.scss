@@ -9,6 +9,18 @@
     @include get-opacity($opacity);
 }
 
+@mixin get-paper-fill($text-type, $theme: 'light') {
+    @include get-paper-opacity($text-type, $theme);
+
+    @if $theme == 'light' {
+        fill: #000;
+    }
+
+    @else {
+        fill: #fff;
+    }
+}
+
 @mixin get-paper-color($text-type, $theme: 'light') {
     @include get-paper-opacity($text-type, $theme);
 
