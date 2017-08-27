@@ -15,8 +15,8 @@ var currentDocument = document.currentScript.ownerDocument;
  * @example
  * <example name="icon">
  * <file name="index.html">
- * <paper-icon name="star"></paper-icon>
- * <paper-icon size="large" name="star"></paper-icon>
+ * <paper-icon name="add"></paper-icon>
+ * <paper-icon size="large" name="add"></paper-icon>
  * </file>
  * </example>
  */

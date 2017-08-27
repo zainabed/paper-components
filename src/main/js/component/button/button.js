@@ -23,7 +23,7 @@ var currentDocument = document.currentScript.ownerDocument;
  * <file name="index.html">
  * <paper-button title="button"></paper-button>
  * <paper-button title="button" type="flat"></paper-button>
- * <paper-button icon="star" type="fab" ></paper-button>
+ * <paper-button icon="add" type="fab" ></paper-button>
  * </file>
  * </example>
  */
