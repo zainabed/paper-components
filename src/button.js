@@ -1,4 +1,6 @@
 'use strict';
+var currentDocument = document.currentScript.ownerDocument;
+
 
 /**
  * @ngdoc module
@@ -26,9 +28,45 @@
  * </file>
  * </example>
  */
+class BaseElement extends HTMLElement {
 
+  constructor() {
+    super();
+    this.shadow = this.createShadowRoot();
+    this.currentDocument = null;
+  }
 
- class PaperButton extends BaseElement {
+  connectedCallback() {
+    this.registerEvents();
+  }
+
+  disconnectedCallback() {
+
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+      this['_' + name] = newValue;
+      this.render();
+  }
+
+  render() {
+    this.shadow.innerHTML = Mustache.render(this.content, this);
+  }
+
+  registerEvents(){
+    this.addEventListener('click', this.onClick);
+  }
+
+  onClick(){
+    console.log('clicked');
+  }
+
+  querySelectorById(id){
+    return this.shadow.querySelector('#' + id);
+  }
+}
+
+export class PaperButton extends BaseElement {
 
 	constructor() {
 		super();
@@ -85,3 +123,4 @@
 }
 
 //window.customElements.define('paper-button', PaperButton);
+

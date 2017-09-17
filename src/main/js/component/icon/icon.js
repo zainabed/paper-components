@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 var currentDocument = document.currentScript.ownerDocument;
 
 /**
@@ -28,11 +28,10 @@ class PaperIcon extends BaseElement {
 		this._style =  null;
 		this._svg = null;
 		this._theme = 'light';
-
 		this.currentDocument = currentDocument;
-	    this.content = `
-	     <%conent%>
-	     `;
+		this.content = `
+     	<%conent%>
+     	`;
 	}
 
 	set name(name) {
@@ -75,12 +74,12 @@ class PaperIcon extends BaseElement {
 	render(){
 		super.render();
 
-		let svgIcon  = this.querySelectorById("svg-icon");
+		let svgIcon  = this.querySelectorById('svg-icon');
 		let symbolDom = document.getElementById(this._name);
 		let pathDom = null;
 		if(symbolDom != null ){
 			let symbol = symbolDom.querySelector('path');
-			pathDom = symbol.cloneNode(true);;
+			pathDom = symbol.cloneNode(true);
 		}
 
 
@@ -92,7 +91,7 @@ class PaperIcon extends BaseElement {
 	}
 
 	connectedCallback() {
-	    super.connectedCallback();
+		super.connectedCallback();
 	}
 
 
