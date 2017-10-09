@@ -6,13 +6,13 @@ requireDir('gulp', {recurse: true});
 
 gulp.task('build', function(cb){
   return runSequence(
-  //  'clean',
-  //  'compile',
-  //  'test',
+    //'clean',
+    //  'compile',
+    //  'test',
     'build-docs',
     'package',
     'demo-package',
-  //  'verify',
+    //  'verify',
     'run',
     'watch',
     cb

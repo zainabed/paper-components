@@ -8,7 +8,7 @@
  * It exteds the HTMLElement to create basic feature of custom element.
  *
  */
-class BaseElement extends HTMLElement {
+export class BaseElement extends HTMLElement {
 
   constructor() {
     super();

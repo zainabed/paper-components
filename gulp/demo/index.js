@@ -10,5 +10,5 @@ gulp.task('build-demo-index', function() {
   return index.pipe(inject(resource,{
     ignorePath: ['target']
   }))
-    .pipe(gulp.dest(demoFileConfig.index.dest));
+  .pipe(gulp.dest(demoFileConfig.index.dest));
 });
