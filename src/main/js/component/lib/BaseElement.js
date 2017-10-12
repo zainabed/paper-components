@@ -1,4 +1,4 @@
-
+import {HTMLElement} from './HTMLElement.js';
 /**
  * @module element
  * @name BaseElement

@@ -5,16 +5,12 @@ let chai = require('chai'),
 // Tell chai that we'll be using the "should" style assertions.
 chai.should();
 
-// Import the Rectangle class.
-//let Base = require(path.join(__dirname, '../../../../main/js/component/lib', 'BaseElement'));
-//let Button = require(path.join(__dirname, '../../../../main/js/component/button', 'button'));
-
-import {Button} from './button.js';
+import {PaperButton} from '../../../../main/js/component/button/button.js';
 
 describe('Unit test Button class', function(){
 	var button = null;
 	beforeEach(function(){
-		button = new Button();
+		button = new PaperButton();
 	});
 
 	it('Button object should exist.\n', function(){
@@ -22,6 +18,7 @@ describe('Unit test Button class', function(){
 	});
 
 	it('Button title should be test', function(){
+		button.title = 'test';
 		chai.expect(button.title).to.equal('test');
 	});
 })
