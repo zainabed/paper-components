@@ -4,7 +4,7 @@
   "description": "HTML Web Components library based on material design",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha --compilers js:babel-core/register"
+    "test": "node_modules/mocha/bin/mocha 'src/test/js/**/*Spec.js' --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -50,6 +50,9 @@
     "mustache": "^2.3.0",
     "node-sass": "^4.5.3",
     "path": "^0.12.7",
+    "posthtml-loader": "^0.11.0",
+    "posthtml-parser": "^0.2.1",
+    "posthtml-sugarml": "^1.0.0-alpha3",
     "require-dir": "^0.3.2",
     "run-sequence": "^2.1.0",
     "sass-loader": "^6.0.6",

@@ -6,11 +6,13 @@ module.exports = {
     path: 'target',
     src: 'target'
   },
-
+  clean: {
+    path: ['target', 'dist']
+  },
   component: {
     src : [ distPath + '*.js'],
     sass :  basePath + 'js/**/*.scss',
-    srcTemplate:  distPath + '*.js',
+    srcTemplate:  distPath + '**/*.js',
     path: 'main/src/js/component'
   },
   developentSource: [

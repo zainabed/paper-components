@@ -1,5 +1,4 @@
-'use strict';
-var currentDocument = document.currentScript.ownerDocument;
+import {BaseElement} from '../lib/BaseElement.js';
 
 /**
  * @ngdoc directive
@@ -21,6 +20,7 @@ var currentDocument = document.currentScript.ownerDocument;
  * </example>
  */
 class PaperIcon extends BaseElement {
+	
 	constructor(){
 		super();
 		this._name = null;
@@ -28,7 +28,6 @@ class PaperIcon extends BaseElement {
 		this._style =  null;
 		this._svg = null;
 		this._theme = 'light';
-		this.currentDocument = currentDocument;
 		this.content = `
      	<%conent%>
      	`;
@@ -98,4 +97,3 @@ class PaperIcon extends BaseElement {
 
 }
 
-window.customElements.define('paper-icon', PaperIcon);

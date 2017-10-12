@@ -4,15 +4,16 @@ const path = require('path');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    button: './main/js/component/button/button.js'
+    button: './main/js/component/button/button.js',
+    icon: './main/js/component/icon/icon.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name]/[name].js'
   },
   module: {
     rules: [
-      {
+      /*{
         test: /\.(sass|scss)$/,
         use: [
           'style-loader',
@@ -25,11 +26,19 @@ module.exports = {
       },
 
       {
-        test: /\.(html)$/,
-        use: {
-          loader: 'html-loader'
-        }
-      }
+      test: /\.html$/,
+        use: [
+          {
+            loader: 'posthtml-loader',
+            options: {
+              parser: 'posthtml-sugarml',
+              plugins: [  ],
+              template: true
+            }
+          }
+        ]
+      }*/
+
       // …
     ],
   },

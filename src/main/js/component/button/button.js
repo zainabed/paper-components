@@ -1,7 +1,4 @@
 import {BaseElement} from '../lib/BaseElement.js';
-import css from './button.scss';
-
-var html = require('./button.tpl.html');
 
 /**
 * @ngdoc module
@@ -40,16 +37,8 @@ export class PaperButton extends BaseElement {
     this._type = 'raised';
     this._icon = null;
     this.content = `
-    <div class="button-paper button-paper-{{type}}" id="container">
-      {{#icon}}
-        <paper-icon name="{{icon}}"></paper-icon>
-      {{/icon}}
-      {{^icon}}
-        <span >{{title}}</span>
-      {{/icon}}
-    </div>
-
-    `;
+      <%conent%>
+      `;
   }
 
   get title() {
@@ -94,4 +83,3 @@ export class PaperButton extends BaseElement {
 
 }
 
-window.customElements.define('paper-button', PaperButton);
