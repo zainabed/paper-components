@@ -14,6 +14,6 @@ gulp.task('build-demo-script', function() {
 
 gulp.task('build-demo-script-lib', function() {
   return gulp.src(demoFileConfig.script.lib)
-    .pipe(concat('demo-lib-script.js'))
+    .pipe(concat('app_lib.js'))
     .pipe(gulp.dest(demoFileConfig.script.dest));
 });

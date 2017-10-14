@@ -1,35 +1,34 @@
-'use strict'
-var currentDocument = document.currentScript.ownerDocument;
+import {BaseElement} from '../lib/BaseElement.js';
 
 /**
- * @ngdoc module
- * @name component
- *
- */
+* @ngdoc module
+* @name component
+*
+*/
 
 /**
- * @ngdoc directive
- * @module component
- * @name button
- * @description
- * A button is wrapper for HTML button usin material design principle.
- *
- * @usage
- * Cards are a convenient means of displaying content composed of different elements. They’re also well-suited for showcasing
- * elements whose size or supported actions vary, like photos with captions of variable length.
- *
- * @example
- * <example name="card">
- * <file name="index.html">
- * <paper-button title="button"></paper-button>
- * <paper-button title="button" type="flat"></paper-button>
- * <paper-button icon="add" type="fab" ></paper-button>
- * </file>
- * </example>
- */
+* @ngdoc directive
+* @module component
+* @name button
+* @description
+* A button is wrapper for HTML button usin material design principle.
+*
+* @usage
+* Cards are a convenient means of displaying content composed of different elements. They’re also well-suited for showcasing
+* elements whose size or supported actions vary, like photos with captions of variable length.
+*
+* @example
+* <example name="card">
+* <file name="index.html">
+* <paper-button title="button"></paper-button>
+* <paper-button title="button" type="flat"></paper-button>
+* <paper-button icon="add" type="fab" ></paper-button>
+* </file>
+* </example>
+*/
 
 
-class PaperButton extends BaseElement {
+export class PaperButton extends BaseElement {
 
   constructor() {
     super();
@@ -37,10 +36,9 @@ class PaperButton extends BaseElement {
     this._title = null;
     this._type = 'raised';
     this._icon = null;
-    this.currentDocument = currentDocument;
     this.content = `
-     <%conent%>
-     `;
+      <%conent%>
+      `;
   }
 
   get title() {
@@ -48,7 +46,6 @@ class PaperButton extends BaseElement {
   }
 
   set title(title) {
-    console.log(title);
     this._title = title;
 
   }
@@ -70,7 +67,7 @@ class PaperButton extends BaseElement {
   }
 
   static get observedAttributes() {
-    return ["title", 'select', 'type', 'icon'];
+    return ['title', 'select', 'type', 'icon'];
   }
 
   connectedCallback() {
@@ -86,4 +83,3 @@ class PaperButton extends BaseElement {
 
 }
 
-window.customElements.define('paper-button', PaperButton);

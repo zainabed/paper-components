@@ -5,6 +5,7 @@ var path= require('path');
 var sass = require('node-sass');
 var gulp = require('gulp');
 
+let distPath = 'dist';
 gulp.task('sass', function(){
   return buildSass();
 })
@@ -24,7 +25,7 @@ function buildSass(){
             return;
           }
           if(content.css){
-            let cssFile = path.join(basePath, fileName + '.css');
+            let cssFile = path.join(distPath, fileName + '/'+ fileName + '.css');
 
             fs.writeFile(cssFile, content.css , function(error){
               console.log(error);

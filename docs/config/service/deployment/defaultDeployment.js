@@ -6,7 +6,7 @@ module.exports = function defaultDeployment() {
     examples: {
       commonFiles: {
         scripts: [
-          '../../demo-lib-script.js',
+          '../../app_lib.js',
           '../../demo-script.js',
           '../../templates.js',
         ],

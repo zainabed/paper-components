@@ -1,8 +1,3 @@
-<div class="button-paper button-paper-{{type}}" id="container">
-  {{#icon}}
-    <paper-icon name="{{icon}}"></paper-icon>
-  {{/icon}}
-  {{^icon}}
-    <span >{{title}}</span>
-  {{/icon}}
+<div class="button-paper button-paper-${_.type}" id="container">
+    <span >${_.title}</span>
 </div>

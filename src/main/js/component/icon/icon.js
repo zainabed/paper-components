@@ -1,5 +1,4 @@
-'use strict'
-var currentDocument = document.currentScript.ownerDocument;
+import {BaseElement} from '../lib/BaseElement.js';
 
 /**
  * @ngdoc directive
@@ -21,6 +20,7 @@ var currentDocument = document.currentScript.ownerDocument;
  * </example>
  */
 class PaperIcon extends BaseElement {
+	
 	constructor(){
 		super();
 		this._name = null;
@@ -28,11 +28,9 @@ class PaperIcon extends BaseElement {
 		this._style =  null;
 		this._svg = null;
 		this._theme = 'light';
-
-		this.currentDocument = currentDocument;
-	    this.content = `
-	     <%conent%>
-	     `;
+		this.content = `
+     	<%conent%>
+     	`;
 	}
 
 	set name(name) {
@@ -75,12 +73,12 @@ class PaperIcon extends BaseElement {
 	render(){
 		super.render();
 
-		let svgIcon  = this.querySelectorById("svg-icon");
+		let svgIcon  = this.querySelectorById('svg-icon');
 		let symbolDom = document.getElementById(this._name);
 		let pathDom = null;
 		if(symbolDom != null ){
 			let symbol = symbolDom.querySelector('path');
-			pathDom = symbol.cloneNode(true);;
+			pathDom = symbol.cloneNode(true);
 		}
 
 
@@ -92,11 +90,10 @@ class PaperIcon extends BaseElement {
 	}
 
 	connectedCallback() {
-	    super.connectedCallback();
+		super.connectedCallback();
 	}
 
 
 
 }
 
-window.customElements.define('paper-icon', PaperIcon);
