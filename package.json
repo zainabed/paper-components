@@ -7,6 +7,11 @@
     "test": "node_modules/mocha/bin/mocha 'src/test/js/**/*Spec.js' --compilers js:babel-core/register",
     "coverage": "node_modules/.bin/nyc --reporter=html --reporter=text  node_modules/.bin/_mocha 'src/test/js/**/*Spec.js' --compilers js:babel-core/register"
   },
+  "nyc": {
+    "exclude": [
+      "src/test/js/**/*Spec.js"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zainabed/paper-components.git"
