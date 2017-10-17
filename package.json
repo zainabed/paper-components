@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "node_modules/mocha/bin/mocha 'src/test/js/**/*Spec.js' --compilers js:babel-core/register",
-    "coverage" : "node_modules/.bin/nyc --reporter=html --reporter=text  node_modules/.bin/_mocha 'src/test/js/**/*Spec.js' --compilers js:babel-core/register"
+    "coverage": "node_modules/.bin/nyc --reporter=html --reporter=text  node_modules/.bin/_mocha 'src/test/js/**/*Spec.js' --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "css-loader": "^0.28.7",
     "dgeni": "^0.4.9",
     "dgeni-packages": "^0.20.0",
-    "eslint": "^4.6.1",
+    "eslint": "^4.9.0",
     "gulp": "^3.9.1",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-angular-templatecache": "^2.0.0",
