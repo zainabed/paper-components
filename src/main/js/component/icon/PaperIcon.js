@@ -19,7 +19,7 @@ import {BaseElement} from '../lib/BaseElement.js';
  * </file>
  * </example>
  */
-class PaperIcon extends BaseElement {
+export class PaperIcon extends BaseElement {
 	
 	constructor(){
 		super();
@@ -42,7 +42,7 @@ class PaperIcon extends BaseElement {
 	}
 
 	set size(size) {
-		this._size = size;
+		this._size = size || 'small';
 	}
 
 	get size(){
@@ -50,8 +50,7 @@ class PaperIcon extends BaseElement {
 	}
 
 	set style(style) {
-		this._style = style;
-		this.class= 'icon icon--' + this._size +  'material-icons ' + this._style;
+		this._style = style || null ;
 	}
 
 	get style(){
@@ -59,11 +58,27 @@ class PaperIcon extends BaseElement {
 	}
 
 	set theme(theme){
-		this._theme = theme;
+		if(theme === 'light' || theme === 'dark'){
+			this._theme = theme; 
+		}else{
+			this._theme = null;
+		}
 	}
 
 	get theme(){
 		return this._theme;
+	}
+
+	buildCssClasses(){
+		this.class= 'icon';
+		
+		if(this._theme) {
+			this.class += ' icon--' + this._theme;
+		}
+
+		if(this._size) {
+			this.class += ' icon--' + this._size;
+		}
 	}
 
 	static get observedAttributes() {

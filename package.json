@@ -4,12 +4,12 @@
   "description": "HTML Web Components library based on material design",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha 'src/test/js/**/*Spec.js' --compilers js:babel-core/register",
-    "coverage": "node_modules/.bin/nyc --reporter=html --reporter=text  node_modules/.bin/_mocha 'src/test/js/**/*Spec.js' --compilers js:babel-core/register"
+    "test": "node_modules/mocha/bin/mocha 'src/test/js/**/*Test.js' --compilers js:babel-core/register -u tdd",
+    "coverage": "node_modules/.bin/nyc --reporter=html --reporter=text  node_modules/.bin/_mocha 'src/test/js/**/*Test.js' --compilers js:babel-core/register -u tdd"
   },
   "nyc": {
     "exclude": [
-      "src/test/js/**/*Spec.js"
+      "src/test/js/**/*Test.js"
     ]
   },
   "repository": {
@@ -64,6 +64,7 @@
     "require-dir": "^0.3.2",
     "run-sequence": "^2.1.0",
     "sass-loader": "^6.0.6",
+    "sinon": "^4.0.1",
     "style-loader": "^0.19.0",
     "webpack": "^3.6.0",
     "webserver": "^3.1.10"
