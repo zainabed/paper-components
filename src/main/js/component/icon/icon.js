@@ -97,3 +97,4 @@ class PaperIcon extends BaseElement {
 
 }
 
+//window.customElements.define("paper-icon",PaperIcon);

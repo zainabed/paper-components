@@ -11,18 +11,19 @@ function make(){
       let basePath = path.dirname(file);
       let   fileName   = path.basename(file, '.js');
       let cssFile = path.join(basePath, fileName + '.css');
-      let templateFile = path.join(srcPath, fileName + '.tpl.html');
+      let templateFile = path.join(srcPath, fileName + '/' + fileName + '.tpl.html');
       let componentFile = path.join(fileConfig.build.path, fileName + '.cp.html');
       console.log(cssFile);
-     // console.log(templateFile);
+      console.log(templateFile);
       fs.readFile(file, 'utf8', function(error, scriptContent){
+       // scriptContent =  '<script>' + scriptContent + 'window.customElements.define("paper-' + fileName + '", Paper' + fileName.charAt(0).toUpperCase() + fileName.substr(1,fileName.length)+' );</script>';
         fs.readFile(cssFile, 'utf8', function(error, cssContent){
           cssContent = '<style>' + cssContent + '</style>';
           fs.readFile(templateFile, 'utf8', function(error, templateContent){
             let content = cssContent + templateContent;
-            content =  scriptContent.replace('<%conent%>', content) ;
-            content = '<script>' + content + 'window.customElements.define("paper-' + fileName + '", Paper' + fileName.charAt(0).toUpperCase() + fileName.substr(1,fileName.length)+' );</script>';
-            
+            content =  scriptContent.replace('<%conent%>', content);
+            content =  content.replace('//window.customElements', 'window.customElements');
+            content = '<script>' + content + '</script>';
             fs.writeFile(componentFile, content, function(error){
               console.log(error);
             })
