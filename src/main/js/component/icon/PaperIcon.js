@@ -60,7 +60,7 @@ export class PaperIcon extends BaseElement {
 
 	set theme(theme){
 		this.removeClass('icon--theme-' + this.theme);
-		this._theme = theme;
+		this._theme = theme || 'light';
 		this.addClass('icon--theme-' + this.theme);
 	}
 
@@ -85,7 +85,14 @@ export class PaperIcon extends BaseElement {
 		}
 
 		if(this.dom !=null && pathDom !=null){
-			this.dom.appendChild(pathDom) ;
+			let childNode  = this.dom.firstElementChild;
+		
+			if(childNode) {
+				this.dom.removeChild(childNode) ;
+			}
+			
+			this.dom.appendChild(pathDom) ;	
+			
 		}
 
 
