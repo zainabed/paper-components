@@ -5,7 +5,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
     button: './main/js/component/button/button.js',
-    icon: './main/js/component/icon/icon.js'
+    icon: './main/js/component/icon/PaperIcon.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

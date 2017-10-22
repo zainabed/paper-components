@@ -14,20 +14,27 @@
 
 }
 
-.icon--light {
+.icon--theme-light {
  @include get-paper-fill('icon', 'light');
 }
 
-.icon--dark{
+.icon--theme-dark{
  @include get-paper-fill('icon', 'dark');
 }
 
-.icon--small{
+.icon--size-small{
    width: $icon--sizeSmall;
    height: $icon--sizeSmall;
    @include icon-margin($icon-dimension, $icon--sizeSmall);
 
 }
+
+.icon--size-large{
+   width: $icon--sizeLarge;
+   height: $icon--sizeLarge;
+   @include icon-margin($icon-dimension, $icon--sizeLarge);
+}
+
 
 .icon__avatar{
    width: $icon-avatar--size;
@@ -43,8 +50,3 @@
    height: $icon-avatar-small--size;
 }
 
-.icon--large{
-   width: $icon--sizeLarge;
-   height: $icon--sizeLarge;
-   @include icon-margin($icon-dimension, $icon--sizeLarge);
-}

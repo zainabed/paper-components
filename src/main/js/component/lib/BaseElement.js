@@ -1,4 +1,4 @@
-import {HTMLElement} from './HTMLElement.js';
+//import {HTMLElement} from './HTMLElement.js';
 /**
  * @module element
  * @name BaseElement
@@ -14,10 +14,15 @@ export class BaseElement extends HTMLElement {
     super();
     this.shadow = this.createShadowRoot();
     this.currentDocument = null;
+    this.id = null;
+    this.dom = null;
   }
 
   connectedCallback() {
+    this.shadow.innerHTML = this.content;
+    this.dom = this.querySelectorById(this.id);
     this.registerEvents();
+    this.render();
   }
 
   disconnectedCallback() {
@@ -25,12 +30,12 @@ export class BaseElement extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-      this['_' + name] = newValue;
+      this[name] = newValue;
       this.render();
   }
 
   render() {
-    this.shadow.innerHTML = Mustache.render(this.content, this);
+    
   }
 
   registerEvents(){
@@ -43,5 +48,24 @@ export class BaseElement extends HTMLElement {
 
   querySelectorById(id){
     return this.shadow.querySelector('#' + id);
+  }
+
+  toggleClass(className) {
+    if(this.dom != null && className) {
+      this.dom.classList.toggle(className);
+    }
+    
+  }
+
+  addClass(className) {
+    if(this.dom != null && className != null) {
+      this.dom.classList.add(className);
+    }
+  }
+
+  removeClass(className) {
+    if(this.dom != null && className) {
+      this.dom.classList.remove(className);
+    }
   }
 }

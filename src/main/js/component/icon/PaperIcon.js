@@ -23,11 +23,10 @@ export class PaperIcon extends BaseElement {
 	
 	constructor(){
 		super();
+		this.id = 'paper-icon';
 		this._name = null;
-		this._size = 'small';
 		this._style =  null;
 		this._svg = null;
-		this._theme = 'light';
 		this.content = `
      	<%conent%>
      	`;
@@ -42,7 +41,9 @@ export class PaperIcon extends BaseElement {
 	}
 
 	set size(size) {
+		this.removeClass('icon--size-' + this.size);
 		this._size = size || 'small';
+		this.addClass('icon--size-' + this.size);
 	}
 
 	get size(){
@@ -58,28 +59,16 @@ export class PaperIcon extends BaseElement {
 	}
 
 	set theme(theme){
-		if(theme === 'light' || theme === 'dark'){
-			this._theme = theme; 
-		}else{
-			this._theme = null;
-		}
+		this.removeClass('icon--theme-' + this.theme);
+		this._theme = theme;
+		this.addClass('icon--theme-' + this.theme);
 	}
 
 	get theme(){
 		return this._theme;
 	}
 
-	buildCssClasses(){
-		this.class= 'icon';
-		
-		if(this._theme) {
-			this.class += ' icon--' + this._theme;
-		}
-
-		if(this._size) {
-			this.class += ' icon--' + this._size;
-		}
-	}
+	
 
 	static get observedAttributes() {
 		return ['name', 'size', 'style', 'theme'];
@@ -88,7 +77,6 @@ export class PaperIcon extends BaseElement {
 	render(){
 		super.render();
 
-		let svgIcon  = this.querySelectorById('svg-icon');
 		let symbolDom = document.getElementById(this._name);
 		let pathDom = null;
 		if(symbolDom != null ){
@@ -96,16 +84,19 @@ export class PaperIcon extends BaseElement {
 			pathDom = symbol.cloneNode(true);
 		}
 
-
-		if(svgIcon !=null && pathDom !=null){
-			svgIcon.appendChild(pathDom) ;
+		if(this.dom !=null && pathDom !=null){
+			this.dom.appendChild(pathDom) ;
 		}
 
 
 	}
 
 	connectedCallback() {
+
 		super.connectedCallback();
+		this.size = this.size || null;
+		this.theme = this.theme || null;
+		
 	}
 
 
