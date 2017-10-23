@@ -5,6 +5,7 @@ pipeline {
 
       stage('install') {
         steps {
+            sh 'npm install graceful-fs'
             sh 'npm install'
         }
       }
