@@ -44,7 +44,6 @@
     "gulp-eslint": "^4.0.0",
     "gulp-inject": "^4.2.0",
     "gulp-watch": "^4.3.11",
-    //"gulp-webpack": "^1.5.0",
     "gulp-webserver": "^0.9.1",
     "html-loader": "^0.5.1",
     "isparta": "^4.0.0",
