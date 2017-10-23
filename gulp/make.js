@@ -23,6 +23,7 @@ function make(){
             let content = cssContent + templateContent;
             content =  scriptContent.replace('<%conent%>', content);
             content =  content.replace('//window.customElements', 'window.customElements');
+           // content =  content.replace('export class HTMLElement { constructor(){} createShadowRoot(){} }', '');
             content = '<script>' + content + '</script>';
             fs.writeFile(componentFile, content, function(error){
               console.log(error);

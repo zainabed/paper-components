@@ -1,9 +1,1 @@
-export class HTMLElement {
-	constructor(){
-
-	}
-
-	createShadowRoot(){
-		
-	}
-}
+export class HTMLElement { constructor(){} createShadowRoot(){} }

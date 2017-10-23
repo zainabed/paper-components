@@ -50,14 +50,7 @@ export class PaperIcon extends BaseElement {
 		return  this._size;
 	}
 
-	set style(style) {
-		this._style = style || null ;
-	}
-
-	get style(){
-		return this._style;
-	}
-
+	
 	set theme(theme){
 		this.removeClass('icon--theme-' + this.theme);
 		this._theme = theme || 'light';
@@ -71,7 +64,7 @@ export class PaperIcon extends BaseElement {
 	
 
 	static get observedAttributes() {
-		return ['name', 'size', 'style', 'theme'];
+		return ['name', 'size', 'theme'];
 	}
 
 	render(){
