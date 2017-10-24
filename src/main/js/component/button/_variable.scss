@@ -1,5 +1,5 @@
 /// button-paper related variables.
-$button-paper--min-width: 64px;
+$button-paper--min-width: 88px;
 $button-paper--height: 36px;
 $dialog-button-paper--height: 36px;
 $button-paper--padding: 8px;
@@ -7,5 +7,9 @@ $button-paper--margin: 6px;
 $button-paper-raised--shadowcolor: #777;
 $button-paper-fab--radius: 56px;
 $button-paper-content--fab--width: 24px;
-$button-paper--lineHeight: 24px;
+$button-paper--lineHeight: 20px;
 $button-paperSheet--topMargin: 24px;
+$button-paper--raised-elevation: 2;
+$button-paper--fab-elevation: 6;
+$button-paper--raised-hover-elevation: 8;
+$button-paper--fab-hover-elevation: 12;

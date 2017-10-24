@@ -4,8 +4,8 @@
   "description": "HTML Web Components library based on material design",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "node_modules/mocha/bin/mocha 'src/test/js/**/*Test.js' --compilers js:babel-core/register -u tdd",
-    "coverage": "node_modules/.bin/nyc --reporter=html --reporter=text  node_modules/.bin/_mocha 'src/test/js/**/*Test.js' --compilers js:babel-core/register -u tdd"
+    "test": "node_modules/mocha/bin/mocha 'src/test/js/**/*Test.js' --compilers js:babel-core/register -u tdd -c",
+    "coverage": "node_modules/.bin/nyc --reporter=html --reporter=text  node_modules/.bin/_mocha 'src/test/js/**/*Test.js' --compilers js:babel-core/register -u tdd -c"
   },
   "nyc": {
     "exclude": [

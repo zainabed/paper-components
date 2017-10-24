@@ -7,6 +7,10 @@
    margin: $value;
 }
 
+:host{
+      display: flex;
+}
+
 .icon{
 	   cursor: pointer;
       //@extend .font-icon;

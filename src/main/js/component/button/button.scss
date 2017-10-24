@@ -4,15 +4,15 @@
 @import "../icon/variable";
 @import "../font/mixin";
 
+:host {
+	margin: $button-paper--margin;
+	display: flex;
+}
 //
 // Button container
 //
-.button-paper{
+.button{
 	height: $button-paper--height;
-	margin-top: $button-paper--margin;
-	margin-right: $button-paper--margin;
-	margin-bottom: $button-paper--margin;
-	margin-left: 0;
 	padding: $button-paper--padding;
 	min-width: $button-paper--min-width;
 	border: 0;
@@ -35,35 +35,35 @@
 //
 // Make appearance of button flat as given in spec.
 //
-.button-paper-flat{
+.button--type-flat{
 	background: transparent;
 }
 
 //
 // Add elevation to button and make it raise.
 //
-.button-paper-raised{
-	@include box-shadow(0, 1px, 3px, #777);
+.button--type-raised{
+	@include elevation($button-paper--raised-elevation);
 	border-radius:2px;
 	padding: $button-paper--padding ($button-paper--padding*2);
 	@include background-hover($color--light);
 	&:hover{
-		@include box-shadow(0, 3px, 3px, darken($button-paper-raised--shadowcolor,10%));
+		@include elevation($button-paper--raised-hover-elevation);
 	}
 }
 
 //
 // Fab button.
 //
-.button-paper-fab{
+.button--type-fab{
 	border-radius: 50%;
 	min-width: $button-paper-fab--radius;
 	min-height: $button-paper-fab--radius;
 	padding:0;
-	@include box-shadow(0, 1px, 3px, #777);
+	@include elevation($button-paper--fab-elevation);
 
 	&:hover{
-		@include box-shadow(0, 3px, 3px, darken($button-paper-raised--shadowcolor,10%));
+		@include elevation($button-paper--fab-hover-elevation);
 	}
 }
 
@@ -71,7 +71,7 @@
 //
 // Reduced FAB button.
 //
-.button-paper-fab--small{
+.button-fab--small{
 	min-width: $icon-dimension+px;
 	min-height: $icon-dimension+px;
 	padding: 0;
@@ -81,7 +81,7 @@
 //
 // Enlarge FAB button.
 //
-.button-paper-fab--large{
+.button-fab--large{
 	min-width: $button-paper-fab--radius;
 	min-height: $button-paper-fab--radius;
 	padding: ($button-paper--padding/2) 0;
@@ -90,7 +90,7 @@
 //
 // FAB button content holder.
 //
-.button-paper-fab-content{
+.button-fab-content{
 	width: $button-paper-content--fab--width;
 }
 
@@ -98,20 +98,21 @@
 //
 // Disabled button style.
 //
-.button-paper--disabled{
+.button--disable{
 	color: darken($color--light, 26%);
 	background: darken($color--light, 12%);
 	cursor: not-allowed;
 
 	&:hover{
 		background: darken($color--light, 12%);
+		@include box-shadow();
 	}
 }
 
 //
 // Button content holder.
 //
-.button-paper-content{
+.button-content{
 	width: 100%;
 	margin-top: $button-paperSheet--topMargin;
 }

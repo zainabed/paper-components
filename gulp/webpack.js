@@ -1,4 +1,4 @@
-const webpack = require('gulp-webpack');
+/*const webpack = require('gulp-webpack');
 const gulp = require('gulp');
 const path = require('path');
 
@@ -12,4 +12,4 @@ gulp.task('webpack', () => {
 			  }
 		}))
 		.pipe(gulp.dest('dist'));
-});
+});*/

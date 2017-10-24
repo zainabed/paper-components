@@ -70,7 +70,7 @@ export class PaperIcon extends BaseElement {
 	render(){
 		super.render();
 
-		let symbolDom = document.getElementById(this._name);
+		let symbolDom = document.getElementById(this.name);
 		let pathDom = null;
 		if(symbolDom != null ){
 			let symbol = symbolDom.querySelector('path');

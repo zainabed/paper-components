@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    button: './main/js/component/button/button.js',
+    button: './main/js/component/button/Paperbutton.js',
     icon: './main/js/component/icon/PaperIcon.js'
   },
   output: {

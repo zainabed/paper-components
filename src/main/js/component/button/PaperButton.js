@@ -1,4 +1,4 @@
-import {BaseElement} from '../lib/BaseElement.js';
+import { BaseElement } from '../lib/BaseElement.js';
 
 /**
 * @ngdoc module
@@ -22,7 +22,7 @@ import {BaseElement} from '../lib/BaseElement.js';
 * <file name="index.html">
 * <paper-button title="button"></paper-button>
 * <paper-button title="button" type="flat"></paper-button>
-* <paper-button icon="add" type="fab" ></paper-button>
+* <paper-button title="add" type="fab" ></paper-button>
 * </file>
 * </example>
 */
@@ -32,10 +32,10 @@ export class PaperButton extends BaseElement {
 
   constructor() {
     super();
-    this.templateId = 'button';
-    this._title = null;
-    this._type = 'raised';
-    this._icon = null;
+    this.id = 'paper-button';
+    this.title = null;
+    this.type = null;
+    this.disable = null;
     this.content = `
       <%conent%>
       `;
@@ -50,16 +50,17 @@ export class PaperButton extends BaseElement {
 
   }
 
-  set icon(icon) {
-    this._icon = icon;
+  set disable(disable) {
+    this._disable = disable === 'true' ? true : false;
   }
 
-  get icon() {
-    return this._icon;
+  get disable() {
+    return this._disable;
   }
 
   set type(type) {
-    this._type = type;
+    console.log(type);
+    this._type = type || 'raised';
   }
 
   get type() {
@@ -67,15 +68,36 @@ export class PaperButton extends BaseElement {
   }
 
   static get observedAttributes() {
-    return ['title', 'select', 'type', 'icon'];
+    return ['title', 'disable', 'type'];
   }
 
   connectedCallback() {
     super.connectedCallback();
   }
 
+  render() {
+    super.render();
+    if (this.dom) {
+      // update css class names
+      this.updateClass();
 
+      if (this.type === 'fab') {
+        this.dom.innerHTML = '<paper-icon name="' + this.title + '"></paper-icon>';
+      } else {
+        this.dom.innerHTML = this.title;
+      }
 
+    }
+
+  }
+
+  updateClass() {
+    this.dom.className = 'button ';
+    this.dom.className += ' button--type-' + this.type;
+    if (this.disable) {
+      this.dom.className += ' button--disable';
+    }
+  }
 
   onClick() {
 
@@ -83,3 +105,4 @@ export class PaperButton extends BaseElement {
 
 }
 
+//window.customElements.define("paper-button",PaperButton);
