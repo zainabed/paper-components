@@ -1,4 +1,4 @@
-import {BaseElement} from '../lib/BaseElement.js';
+import {PaperComponent} from '../lib/PaperComponent.js';
 
 /**
  * @ngdoc directive
@@ -19,7 +19,7 @@ import {BaseElement} from '../lib/BaseElement.js';
  * </file>
  * </example>
  */
-export class PaperIcon extends BaseElement {
+export class PaperIcon extends PaperComponent {
 	
 	constructor(){
 		super();

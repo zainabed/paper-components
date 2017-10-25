@@ -1,4 +1,4 @@
-import { BaseElement } from '../lib/BaseElement.js';
+import { PaperComponent } from '../lib/PaperComponent';
 
 /**
 * @ngdoc module
@@ -28,7 +28,7 @@ import { BaseElement } from '../lib/BaseElement.js';
 */
 
 
-export class PaperButton extends BaseElement {
+export class PaperButton extends PaperComponent {
 
   constructor() {
     super();
@@ -59,7 +59,6 @@ export class PaperButton extends BaseElement {
   }
 
   set type(type) {
-    console.log(type);
     this._type = type || 'raised';
   }
 
@@ -92,8 +91,7 @@ export class PaperButton extends BaseElement {
   }
 
   updateClass() {
-    this.dom.className = 'button ';
-    this.dom.className += ' button--type-' + this.type;
+    this.dom.className = 'button button--type-' + this.type;
     if (this.disable) {
       this.dom.className += ' button--disable';
     }

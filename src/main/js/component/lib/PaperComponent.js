@@ -1,14 +1,14 @@
 //import {HTMLElement} from './HTMLElement.js';
 /**
  * @module element
- * @name BaseElement
+ * @name PaperComponent
  *
  * @description
  * Base class for all custom component.
  * It exteds the HTMLElement to create basic feature of custom element.
  *
  */
-export class BaseElement extends HTMLElement {
+export class PaperComponent extends HTMLElement {
 
   constructor() {
     super();
