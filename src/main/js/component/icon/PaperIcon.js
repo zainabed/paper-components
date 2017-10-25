@@ -1,4 +1,4 @@
-import {PaperComponent} from '../lib/PaperComponent.js';
+import { PaperComponent } from '../lib/PaperComponent.js';
 
 /**
  * @ngdoc directive
@@ -20,12 +20,13 @@ import {PaperComponent} from '../lib/PaperComponent.js';
  * </example>
  */
 export class PaperIcon extends PaperComponent {
-	
-	constructor(){
+
+	constructor() {
 		super();
 		this.id = 'paper-icon';
-		this._name = null;
-		this._style =  null;
+		this.name = null;
+		this.size = null;
+		this.theme = null;
 		this._svg = null;
 		this.content = `
      	<%conent%>
@@ -36,67 +37,67 @@ export class PaperIcon extends PaperComponent {
 		this._name = name;
 	}
 
-	get name(){
+	get name() {
 		return this._name;
 	}
 
 	set size(size) {
-		this.removeClass('icon--size-' + this.size);
 		this._size = size || 'small';
-		this.addClass('icon--size-' + this.size);
 	}
 
-	get size(){
-		return  this._size;
+	get size() {
+		return this._size;
 	}
 
-	
-	set theme(theme){
-		this.removeClass('icon--theme-' + this.theme);
+
+	set theme(theme) {
 		this._theme = theme || 'light';
-		this.addClass('icon--theme-' + this.theme);
 	}
 
-	get theme(){
+	get theme() {
 		return this._theme;
 	}
 
-	
+
 
 	static get observedAttributes() {
 		return ['name', 'size', 'theme'];
 	}
 
-	render(){
+	render() {
 		super.render();
 
 		let symbolDom = document.getElementById(this.name);
 		let pathDom = null;
-		if(symbolDom != null ){
+		/* istanbul ignore else */
+		if (symbolDom != null) {
 			let symbol = symbolDom.querySelector('path');
 			pathDom = symbol.cloneNode(true);
 		}
+		/* istanbul ignore else */
+		if (this.dom != null && pathDom != null) {
+			let childNode = this.dom.firstElementChild;
 
-		if(this.dom !=null && pathDom !=null){
-			let childNode  = this.dom.firstElementChild;
-		
-			if(childNode) {
-				this.dom.removeChild(childNode) ;
+			if (childNode) {
+				this.dom.removeChild(childNode);
 			}
-			
-			this.dom.appendChild(pathDom) ;	
-			
+
+			this.dom.appendChild(pathDom);
+
 		}
 
+		this.updateClass();
+	}
 
+	updateClass() {
+		/* istanbul ignore else */
+		if (this.dom) {
+			this.dom.setAttribute('class', 'icon icon--size-' + this.size + ' icon--theme-' + this.theme);
+		}
 	}
 
 	connectedCallback() {
-
 		super.connectedCallback();
-		this.size = this.size || null;
-		this.theme = this.theme || null;
-		
 	}
 
 

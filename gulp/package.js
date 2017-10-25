@@ -7,7 +7,7 @@ gulp.task('package', function(cb) {
     'sass',
    // 'validate',
     'make',
-    'package-component',
+    
   //  'package-index',
     cb
   )

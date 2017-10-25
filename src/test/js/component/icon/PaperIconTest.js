@@ -1,5 +1,6 @@
 import { Expect, Sinon, Chai } from '../../lib/Chai.js';
 import { PaperIcon } from '../../../../main/js/component/icon/PaperIcon.js';
+import { PaperComponent } from '../../../../main/js/component/lib/PaperComponent';
 
 suite('Unit test cases for PaperIcon class.\n', () => {
 	let icon = null;
@@ -8,15 +9,7 @@ suite('Unit test cases for PaperIcon class.\n', () => {
 	dom.classList = Chai.spy.object(['remove', 'add']);
 
 	setup(() => {
-		PaperIcon.prototype.createShadowRoot = Sinon.stub();
-		PaperIcon.prototype.addEventListener = Sinon.stub();
-		PaperIcon.prototype.createShadowRoot.returns({
-			querySelector: Sinon.stub().returns(dom)
-		});
-		global.document = {
-			getElementById: Sinon.stub()
-		};
-
+		Sinon.stub(PaperComponent.prototype, 'connectedCallback');
 		icon = new PaperIcon();
 
 		// call initialization method.
@@ -25,6 +18,7 @@ suite('Unit test cases for PaperIcon class.\n', () => {
 
 	teardown(() => {
 		icon = null;
+		PaperComponent.prototype.connectedCallback.restore();
 	});
 
 	test('Class should be defined.\n', () => {
@@ -100,20 +94,21 @@ suite('Unit test cases for PaperIcon class.\n', () => {
 			symbol.cloneNode = Sinon.stub().returns({});
 			let symbolDom = Chai.spy.object(['querySelector']);
 			symbolDom.querySelector = Sinon.stub().returns(symbol)
-			global.document.getElementById.returns(symbolDom);
-
+			global.document = Chai.spy.object(['getElementById']);
+			global.document.getElementById = Sinon.stub().returns(symbolDom);
+			icon.dom = Chai.spy.object(['removeChild', 'appendChild']);
 			
 		});
 
 		test('Dom appendChild should have been called.\n', () =>{
 			icon.render();
-			Expect(dom.appendChild).to.have.been.called();
+			Expect(icon.dom.appendChild).to.have.been.called();
 		});
 
 		test('Dom removeChild should have beend called.\n', () => {
-			dom.firstElementChild = {};
+			icon.dom.firstElementChild = {};
 			icon.render();
-			Expect(dom.removeChild).to.have.been.called();
+			Expect(icon.dom.removeChild).to.have.been.called();
 		});
 
 	});
